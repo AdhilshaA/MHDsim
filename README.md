@@ -1,2 +1,2 @@
-# MHDsim.github.io
-For a website to be hosted.
+# MHDsim - MagnetoHydroDynamics Project
+For a website to be hosted. (temporary template loaded)
