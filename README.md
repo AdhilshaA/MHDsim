@@ -1,2 +1,2 @@
 # MHDsim - MagnetoHydroDynamics Project
-For a website to be hosted. (temporary template loaded)
+For a website to be hosted at [MHDsim](www.adhilshaa.githib.io/MHDsim/)
