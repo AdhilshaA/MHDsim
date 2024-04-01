@@ -3059,8 +3059,8 @@ body,
   <div class="quick-links">
     <button class="quick-link"><a href="#11-introduction">INTRODUCTION</a></button>
     <button class="quick-link"><a href="#task-1-solving-the-diffusion-equation">TASK 1</a></button>
-    <button class="quick-link"><a href="#task-2-tbd">TASK 2</a></button>
-    <button class="quick-link"><a href="">TASK 3</a></button>
+    <button class="quick-link"><a href="#task-2">TASK 2</a></button>
+    <button class="quick-link"><a href="#task-3">TASK 3</a></button>
     <button class="quick-link"><a href="references">REFERENCES</a></button>
   </div>
 </div>
@@ -3088,7 +3088,7 @@ body,
     </li>
     </ul>
     </li>
-    <li><a href="#task-2-tbd">TASK 2: (TBD)</a>
+    <li><a href="#task-2">TASK 2</a>
     <ul>
     <li><a href="#21-introduction-and-equations">2.1 Introduction and equations</a></li>
     <li><a href="#22-implementation">2.2 Implementation</a></li>
@@ -3104,7 +3104,7 @@ body,
     </li>
     </ul>
     </li>
-    <li><a href="#task-3-tbd">Task 3: (TBD)</a></li>
+    <li><a href="#task-3">Task 3</a></li>
     <li><a href="#references">References</a></li>
     </ul>
     <hr>
@@ -3308,7 +3308,7 @@ body,
     <p>As you can see in the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> implementation, the non-zero boundary conditions are not maintained at all. This is because the ghost zones cannot help much in keeping the boundary conditions constant as the equation contains first and second derivatives as well as the function itself. The 'relative anti-symmetric' ghost zones can only keep the second derivative zero at the boundaries.</p>
     <p>The decay with of magnetic field with time is evident here, even with different seed fields used in the implementations.</p>
     <hr>
-    <h2 id="task-2-tbd">TASK 2: (TBD)</h2>
+    <h2 id="task-2">TASK 2</h2>
     <h3 id="21-introduction-and-equations">2.1 Introduction and equations</h3>
     <p>From the original induction equation, we omit the terms involving <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>V</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span> from both equations and the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> term from the equation for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>ϕ</mi></msub></mrow><annotation encoding="application/x-tex">B_{\phi}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, in order to get a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\alpha\omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span></span></span> dynamo. Task 2 will be focused on solving these equations. THe equations are:</p>
     <p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><msub><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mi>r</mi></msub></mrow><mrow><mi mathvariant="normal">∂</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac><mi mathvariant="normal">∂</mi><mrow><mi mathvariant="normal">∂</mi><mi>z</mi></mrow></mfrac><mo stretchy="false">(</mo><mi>α</mi><msub><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mi>ϕ</mi></msub><mo stretchy="false">)</mo><mo>+</mo><msub><mi>η</mi><mi>t</mi></msub><mrow><mo fence="true">[</mo><mfrac><mi mathvariant="normal">∂</mi><mrow><mi mathvariant="normal">∂</mi><mi>r</mi></mrow></mfrac><mrow><mo fence="true">(</mo><mfrac><mn>1</mn><mi>r</mi></mfrac><mfrac><mi mathvariant="normal">∂</mi><mrow><mi mathvariant="normal">∂</mi><mi>r</mi></mrow></mfrac><mo stretchy="false">(</mo><mi>r</mi><msub><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mi>r</mi></msub><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow><mo>+</mo><mfrac><mrow><msup><mi mathvariant="normal">∂</mi><mn>2</mn></msup><msub><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mi>r</mi></msub></mrow><mrow><mi mathvariant="normal">∂</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{\partial \overline B_r}{\partial t} = -  \frac{\partial}{\partial z}(\alpha \overline B_{\phi}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right] 
@@ -3414,7 +3414,7 @@ c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
 M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2395em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
 <p>With the theoretical values at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>d</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t_d = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> (unit diffusion time, since time is scaled) and the global decay rate obtained at a longer simulation, the below figure was plotted.</p>
 <p><img src="figures\task2\gamma_vs_r_trial12_global.png" alt="image"></p>
-<h2 id="task-3-tbd">Task 3: (TBD)</h2>
+<h2 id="task-3">Task 3</h2>
 <hr>
     <h2 id="references">References</h2>
     <ol>
