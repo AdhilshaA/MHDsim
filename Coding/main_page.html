@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MHDsim Main Page</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">MHDsim Main Page</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#p464---mhd-project" id="toc-p464---mhd-project">P464 - MHD
+Project</a></li>
+<li><a href="#task-1-solving-the-diffusion-equation"
+id="toc-task-1-solving-the-diffusion-equation">TASK 1: Solving the
+diffusion equation</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">1.1
+Introduction</a></li>
+<li><a href="#equation-forms" id="toc-equation-forms">1.2 Equation
+forms</a></li>
+<li><a href="#boundary-conditions" id="toc-boundary-conditions">1.3
+Boundary conditions</a></li>
+<li><a href="#implementation" id="toc-implementation">1.4
+Implementation</a></li>
+<li><a href="#constants-and-parameters-for-simulation"
+id="toc-constants-and-parameters-for-simulation">1.5 Constants and
+parameters for simulation</a></li>
+</ul></li>
+<li><a href="#task-2-tbd" id="toc-task-2-tbd">TASK 2: (TBD)</a></li>
+</ul>
+</nav>
+<h2 id="p464---mhd-project">P464 - MHD Project</h2>
+<ul>
+<li>Implemented by <a href="https://github.com/AdhilshaA">Adhilsha
+A</a></li>
+<li>Last updated on <em>14-03-2024</em></li>
+</ul>
+<p>This website follows the updates on my project on MHD. The project is
+about the <code>study of the Galactic Dynamos</code>. Each task in the
+project gets one step closer to the final goal. The project is divided
+into 3 tasks. ________ ## TABLE OF CONTENTS</p>
+<ul>
+<li><a href="#p464---mhd-project">P464 - MHD Project</a></li>
+<li><a href="#table-of-contents">TABLE OF CONTENTS</a></li>
+<li><a href="#task-1-solving-the-diffusion-equation">TASK 1: Solving the
+diffusion equation</a>
+<ul>
+<li><a href="#11-introduction">1.1 Introduction</a></li>
+<li><a href="#12-equation-forms">1.2 Equation forms</a></li>
+<li><a href="#13-boundary-conditions">1.3 Boundary conditions</a></li>
+<li><a href="#14-implementation">1.4 Implementation</a>
+<ul>
+<li><a href="#141-spatial-derivative">1.4.1 Spatial derivative</a></li>
+<li><a href="#142-rk4-time-stepping">1.4.2 RK4 time stepping</a></li>
+</ul></li>
+<li><a href="#15-constants-and-parameters-for-simulation">1.5 Constants
+and parameters for simulation</a>
+<ul>
+<li><a href="#151-study-of-evolution-of-magnetic-field-strength">1.5.1
+Study of evolution of Magnetic field strength</a></li>
+<li><a href="#152-study-of-evolution-of-pitch-angle">1.5.2 Study of
+evolution of pitch angle.</a></li>
+<li><a
+href="#153-study-of-magnetic-field-evolution-with-different-seed-fields-and-different-boundary-conditions">1.5.3
+Study of Magnetic field evolution with different seed fields and
+different boundary conditions</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#task-2-tbd">TASK 2: (TBD)</a> ________</li>
+</ul>
+<h2 id="task-1-solving-the-diffusion-equation">TASK 1: Solving the
+diffusion equation</h2>
+<h3 id="introduction">1.1 Introduction</h3>
+<p>The first task is to solve the diffusion equation in 1D. The
+diffusion equation is given by: [ = - (rB_r) - (V_z B_r) - (B_{}) + _t
+]</p>
+<p>[ = - qB_{r} - (V_r B_{}) - (V_z B_{}) + (B_{r}) + _t ]</p>
+<p>where (B_r), (B_{}) and (B_z) are the components of the magnetic
+field, (V_r), (V_{}) and (V_z) are the components of the velocity
+field.</p>
+<p>For this this task, we solve the diffusion equation omitting the ((V
+B)) and () terms. The equation we have to solve becomes: [ = _t ]</p>
+<p>[ = _t ]</p>
+<p>Since both (B_r) and (B_{}) have same form of equation, we generalize
+the form of the equation to: [ = _t ]</p>
+<h3 id="equation-forms">1.2 Equation forms</h3>
+<p>In case of (B_r(z)) and (B_{}(z)), the equations become: [ = _t ]</p>
+<p>In case of (B_r(r)) and (B_{}(r)) under no-(z) appproximation, the
+equations become: [ = _t ]</p>
+<p>On expanding the equation, we get: [ = _t ]</p>
+<p>These are the equations to be solved in this task.</p>
+<h3 id="boundary-conditions">1.3 Boundary conditions</h3>
+<p>We will be using the simplest boundary conditions for this task. The
+boundary conditions are: [ B_r = B_{} = 0 (z = -h, h)(r = 0,r_{max})
+]</p>
+<p>We will be taking dimensionless units with (h = 1), (_t = 1).</p>
+<p>In (r) implementation, we will be starting with (r) = 0.01 since the
+value (r = 0) is can possibly cause division by zero errors.</p>
+<h3 id="implementation">1.4 Implementation</h3>
+<p>For our implementation we will be using finite difference method for
+defining the spatial derivatives and RK4 for the time stepping /
+evolution. The code can be observed at <a
+href="task1_code.html">task1_code</a>.</p>
+<h4 id="spatial-derivative">1.4.1 Spatial derivative</h4>
+<p>The spatial derivatives are calculated using the finite difference
+method. here, we are using 6th order finite difference method for the
+spatial derivatives. The 6th order finite difference method is given by:
+[ = ( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3}
+) ] [ = ( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} -
+27f_{i+2} + 2f_{i+3} ) ]</p>
+<p>Other orders can be used and is available for use in the code.</p>
+<p>For the sake of obtaining smooth derivatives as well for the sake of
+maintaining the boundary conditions, we use <code>ghost zones</code>. By
+default, ‘relative anti-symmetric’ ghost zones are used where the ghost
+cell at (i) distance away from boundary (b) is given by: [ f_{b-i} =
+2f_{b} - f_{b+i} ] [ f_{b+i} = 2f_{b} - f_{b-i} ]</p>
+<p>where (i = 1, 2, 3, …, n) ((n) is the half the order of the finite
+difference method).</p>
+<p>Other ghost zones types, such as ‘symmetric’ and ‘anti-symmetric’ can
+also be used and is available for use in the code.</p>
+<p>Using the 6th order finite difference method and ‘relative
+anti-symmetric’ ghost zones, a following magnetic field and the spatial
+derivatives are obtained (test case):</p>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\initial_condition_B.png&quot; alt=&quot;Sample Field&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;div style=&quot;display:inline-block;&quot;&gt;
+    &lt;img src=&quot;figures\first_spatial_derivative.png&quot; alt=&quot;First Spatial Derivative&quot; /&gt;
+&lt;/div&gt;
+&lt;div style=&quot;display:inline-block;&quot;&gt;
+    &lt;img src=&quot;figures\second_spatial_derivative.png&quot; alt=&quot;Second Spatial Derivative&quot; /&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<p>As you can see the spatial derivatives are smooth and the second
+derivative is zero at the boundaries as expected from the ‘relative
+anti-symmetric’ ghost zones. This works exceptionally well for the (z)
+implementation. For the (r) implementation, the ghost zones cannot help
+much in keeping the boundary conditions constant as the equation
+contains first and second derivatives as well as the function itself.
+Hence, the boundary conditions are not maintained well in the (r)
+implementation. This is a known issue and is being worked on.</p>
+<h4 id="rk4-time-stepping">1.4.2 RK4 time stepping</h4>
+<p>The time stepping is done using the RK4 method. Our evolution
+function can be given of form: [ = f(B, t) ] Then, the RK4 method
+evolution for a single time step can be given by: [ _1 = t f(B, t) ] [
+_2 = t f(B + , t + ) ] [ _3 = t f(B + , t + ) ] [ _4 = t f(B + k_3, t +
+t) ]</p>
+<p>[ B(t + t) = B(t) + (_1 + 2_2 + 2_3 + _4) ]</p>
+<p>The thing to note here about the generalized form, with regards to
+the RK4 method, is that: - The spatial derivatives do not change values
+with the change ((B B + /2)) in the RK4 method. This is due to the
+symmetry of the spatial derivative equations. Hence, the spatial
+derivatives are calculated only once at the start of the time step.
+Thus, it is not mentioned in the equation form.</p>
+<p>Our method, as mentioned above, is to find the spatial derivatives
+using finite difference method at a certain time step and then use the
+RK4 method to evolve the system to the next time step. This is done
+repetitively to get the solution at all time steps.</p>
+<h3 id="constants-and-parameters-for-simulation">1.5 Constants and
+parameters for simulation</h3>
+<p>For (z) implementation, we will be using the following parameters: -
+(z  (-1, 1)) <code># range of z</code> - (t  [0, 1])
+<code># range of time</code> - (N_z = 80)
+<code># number of spatial steps</code> - (N_t = 5000)
+<code># number of time steps</code> - (order = 6)
+<code># order of the finite difference method</code> -
+<em>ghostzone_type</em> = ‘relative anti-symmetric’
+<code># type of ghostzone</code></p>
+<p>For (r) implementation, we will be using the following parameters: -
+(r  (0.01, 8.01)) <code># range of r</code> - (t  [0, 1])
+<code># range of time</code> - (N_r = 100)
+<code># number of spatial steps</code> - (N_t = 4000)
+<code># number of time steps</code> - (order = 6)
+<code># order of the finite difference method</code> -
+<em>ghostzone_type</em> = ‘relative anti-symmetric’
+<code># type of ghostzone</code></p>
+<p>The seed field used for the z-implementation is:</p>
+<p>[ B_{}(z) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>whereas the seed field used for the r-implementation is:</p>
+<p>[ B_{}(r) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>The results are:</p>
+<!-- ![image](figures\evolution_B_phi_z.png)
+![image](figures\evolution_B_phi_r.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\evolution_B_phi_z.png&quot; alt=&quot;Evolution of B_phi_z&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\evolution_B_phi_r.png&quot; alt=&quot;Evolution of B_phi_r&quot; /&gt;</code></pre>
+</div>
+<h4 id="study-of-evolution-of-magnetic-field-strength">1.5.1 Study of
+evolution of Magnetic field strength</h4>
+<p>For this part, I am setting (B_r = 0) and evolving (B_{}) over time.
+The magnetic field strength, (|B_{}|), is given at different points in
+the spatial domain as a function of time. The results are (N.B. The
+decay rate is given in the legend off the plots):</p>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\B_phi_z_strength__timesteps.png&quot; alt=&quot;Evolution of B_phi_z Strength Over Timesteps&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\B_phi_r_strength__timesteps.png&quot; alt=&quot;Evolution of B_phi_r Strength Over Timesteps&quot; /&gt;</code></pre>
+</div>
+<p>from these results, taking the middle point in the spatial domain,
+the magnetic field strength, (|B_{}|), is given as a function of time in
+<em>log</em>-scale. Then it can be fitted to find the
+<code>decay rate</code> as well. The results are:</p>
+<!-- ![B_phi_z_decay](figures\B_phi_z_decay.png)
+![B_phi_r_decay](figures\B_phi_r_decay.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\B_phi_z_decay.png&quot; alt=&quot;B_phi_z Decay&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\B_phi_r_decay.png&quot; alt=&quot;B_phi_r Decay&quot; /&gt;</code></pre>
+</div>
+<h4 id="study-of-evolution-of-pitch-angle.">1.5.2 Study of evolution of
+pitch angle.</h4>
+<p>For this part, I am setting the seed (B_r) and (B_{}) to non-zero
+values and evolving them over time. The pitch angle is given by: [p =
+^{-1}()]</p>
+<p>The seed fields taken for this simulation are, for the
+z-implementation: [ _{}(z) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ <em>{r}(z) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ] and for the
+r-implementation: [ </em>{}(r) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ _{r}(r) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ]</p>
+<p>The time evolution of the fields are given below for reference:</p>
+<!-- ![Bphi_Br_z_r_evolution](figures\Bphi_Br_z_r_evolution.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\Bphi_Br_z_r_evolution.png&quot; alt=&quot;Bphi_Br_z_r_evolution&quot; /&gt;</code></pre>
+</div>
+<p>The results of the pitch angle evolution at certain specific spatial
+steps were obtained as well. The results:</p>
+<!-- ![pitch_angle_z_timeevolution_at_diff_spatialsteps](figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png)
+![pitch_angle_r_timeevolution_at_diff_spatialsteps](figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png&quot; alt=&quot;pitch_angle_z_timeevolution_at_diff_spatialsteps&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png&quot; alt=&quot;pitch_angle_r_timeevolution_at_diff_spatialsteps&quot; /&gt;</code></pre>
+</div>
+<p>To get another perspective, the pitch angle variation over spatial
+domain at different time steps is also found. The results are:</p>
+<!-- ![pitch_angle_z_spatialevolution_at_diff_timesteps.png](figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png)
+![pitch_angle_r_spatialvariation_at_diff_timesteps](figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png&quot; alt=&quot;pitch_angle_z_spatialevolution_at_diff_timesteps&quot; /&gt;</code></pre>
+</div>
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png&quot; alt=&quot;pitch_angle_r_spatialevolution_at_diff_timesteps&quot; /&gt;</code></pre>
+</div>
+<h4
+id="study-of-magnetic-field-evolution-with-different-seed-fields-and-different-boundary-conditions">1.5.3
+Study of Magnetic field evolution with different seed fields and
+different boundary conditions</h4>
+<p>Here, I did two trials, first one with zero boundary conditions.
+Then, the second one with non-zero boundary conditions and different
+seed fields from the previous trial.</p>
+<p>The trial 1 seed field with zero boundary conditions is, for the
+z-implementation: [ B_{}^z(z) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ B_{r}^z(z) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ] and for the
+r-implementation: [ B_{}^r(r) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ B_{r}^r(r) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ] The results are:</p>
+<!-- ![Bphi_Br_z_r_evolution_trial1](figures\Bphi_Br_z_r_evolution_trial1.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\Bphi_Br_z_r_evolution_trial1.png&quot; alt=&quot;Bphi_Br_z_r_evolution_trial1&quot; /&gt;</code></pre>
+</div>
+<p>Here, with zero boundary conditions, the boundaries are maintained
+well in the z-implementation. THe reason for this is ‘relative
+anti-symmetric’ ghost zones which keeps the () zero at the
+boundaries.</p>
+<p>However, the boundaries are not maintained well in the
+r-implementation, even though the it is hardly noticeable in the plots.
+This is because the magnetic field is decaying and the boundary
+condition is already zero. Hence, the boundary condition is ‘seen’ to be
+maintained well. But, the difference is noticeable in the next
+trial.</p>
+<p>With the different seed fields used in the implementations, all
+magnetic field are seen to decay with time, as expected.</p>
+<p>The trial 2 seed field with non-zero boundary conditions is, for the
+z-implementation: [ B_{}^z(r, , z) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ B_{r0}^z(r, , z) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ] and for the
+r-implementation: [ B_{}^r(r, , z) = 3 ( ) + 1 ( 2) + 2 ( 5) ]</p>
+<p>[ B_{r0}^r(r, , z) = 3 ( ) + 2.5 ( 2) + 1 ( 5) ] The results are:</p>
+<!-- ![Bphi_Br_z_r_evolution_trial2](figures\Bphi_Br_z_r_evolution_trial2.png) -->
+<div style="text-align:center;">
+<pre><code>&lt;img src=&quot;figures\Bphi_Br_z_r_evolution_trial2.png&quot; alt=&quot;Bphi_Br_z_r_evolution_trial2&quot; /&gt;</code></pre>
+</div>
+<p>Here in (z) implementation, even the non-zero boundaries are
+maintained well as expected.</p>
+<p>As you can see in the (r) implementation, the non-zero boundary
+conditions are not maintained at all. This is because the ghost zones
+cannot help much in keeping the boundary conditions constant as the
+equation contains first and second derivatives as well as the function
+itself. The ‘relative anti-symmetric’ ghost zones can only keep the
+second derivative zero at the boundaries.</p>
+<p>THe decay with of magentic field with time is evident here, even with
+different seed fields used in the implementations.</p>
+<hr />
+<h2 id="task-2-tbd">TASK 2: (TBD)</h2>
+</body>
+</html>
