@@ -14,6 +14,7 @@ ________
     - [1.3 Boundary conditions](#13-boundary-conditions)
     - [1.4 Implementation](#14-implementation)
       - [1.4.1 Spatial derivative](#141-spatial-derivative)
+      - [1.4.2 RK4 time stepping](#142-rk4-time-stepping)
       - [1.5.1 Study of evolution of Magnetic field strength](#151-study-of-evolution-of-magnetic-field-strength)
       - [1.5.2 Study of evolution of pitch angle.](#152-study-of-evolution-of-pitch-angle)
       - [1.5.3 Study of Magnetic field evolution with different seed fields and different boundary conditions](#153-study-of-magnetic-field-evolution-with-different-seed-fields-and-different-boundary-conditions)
@@ -113,17 +114,21 @@ For our implementation we will be using finite difference method for defining th
 
 The spatial derivatives are calculated using the finite difference method. here, we are using 6th order finite difference method for the spatial derivatives. The 6th order finite difference method is given by:
 ```math
-\frac{d f}{d x} = \frac{1}{60\delta x}\left( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3} \right) ```
+\frac{d f}{d x} = \frac{1}{60\delta x}\left( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3} \right) 
+```
 ```math
-\frac{d^2 f}{d x^2} = \frac{1}{180\delta x^2}\left( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} - 27f_{i+2} + 2f_{i+3} \right) ```
+\frac{d^2 f}{d x^2} = \frac{1}{180\delta x^2}\left( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} - 27f_{i+2} + 2f_{i+3} \right) 
+```
 
 Other orders can be used and is available for use in the code.
 
 For the sake of obtaining smooth derivatives as well for the sake of maintaining the boundary conditions, we use `ghost zones`. By default, 'relative anti-symmetric' ghost zones are used where the ghost cell at $i$ distance away from boundary $b$ is given by:
 ```math
- f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} ```
+ f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} 
+ ```
 ```math
- f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} ```
+ f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} 
+ ```
 
 where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference method).
 
