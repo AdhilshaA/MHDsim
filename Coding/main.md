@@ -125,15 +125,15 @@ Other ghost zones types, such as 'symmetric' and 'anti-symmetric' can also be us
 Using the 6th order finite difference method and 'relative anti-symmetric' ghost zones, a following magnetic field and the spatial derivatives are obtained (test case):
 
 <div style="text-align:center;">
-    <img src="figures\initial_condition_B.png" alt="Sample Field" />
+    <img src="Coding\figures\initial_condition_B.png" alt="Sample Field" />
 </div>
 
 <div style="text-align:center;">
     <div style="display:inline-block;">
-        <img src="figures\first_spatial_derivative.png" alt="First Spatial Derivative" />
+        <img src="Coding\figures\first_spatial_derivative.png" alt="First Spatial Derivative" />
     </div>
     <div style="display:inline-block;">
-        <img src="figures\second_spatial_derivative.png" alt="Second Spatial Derivative" />
+        <img src="Coding\figures\second_spatial_derivative.png" alt="Second Spatial Derivative" />
     </div>
 </div>
 
@@ -196,14 +196,14 @@ $$
 
 The results are:
 
-<!-- ![image](figures\evolution_B_phi_z.png)
-![image](figures\evolution_B_phi_r.png) -->
+<!-- ![image](Coding\figures\evolution_B_phi_z.png)
+![image](Coding\figures\evolution_B_phi_r.png) -->
 <div style="text-align:center;">
-    <img src="figures\evolution_B_phi_z.png" alt="Evolution of B_phi_z" />
+    <img src="Coding\figures\evolution_B_phi_z.png" alt="Evolution of B_phi_z" />
 </div>
 
 <div style="text-align:center;">
-    <img src="figures\evolution_B_phi_r.png" alt="Evolution of B_phi_r" />
+    <img src="Coding\figures\evolution_B_phi_r.png" alt="Evolution of B_phi_r" />
 </div>
 
 
@@ -212,24 +212,24 @@ The results are:
 For this part, I am setting $\overline B_r = 0$ and evolving $\overline B_{\phi}$ over time. The magnetic field strength, $|B_{\phi}|$, is given at different points in the spatial domain as a function of time. The results are (N.B. The decay rate is given in the legend off the plots):
 
 <div style="text-align:center;">
-    <img src="figures\B_phi_z_strength__timesteps.png" alt="Evolution of B_phi_z Strength Over Timesteps" />
+    <img src="Coding\figures\B_phi_z_strength__timesteps.png" alt="Evolution of B_phi_z Strength Over Timesteps" />
 </div>
 
 <div style="text-align:center;">
-    <img src="figures\B_phi_r_strength__timesteps.png" alt="Evolution of B_phi_r Strength Over Timesteps" />
+    <img src="Coding\figures\B_phi_r_strength__timesteps.png" alt="Evolution of B_phi_r Strength Over Timesteps" />
 </div>
 
 
 from these results, taking the middle point in the spatial domain, the magnetic field strength, $|B_{\phi}|$, is given as a function of time in *log*-scale. Then it can be fitted to find the `decay rate` as well. The results are:
 
-<!-- ![B_phi_z_decay](figures\B_phi_z_decay.png)
-![B_phi_r_decay](figures\B_phi_r_decay.png) -->
+<!-- ![B_phi_z_decay](Coding\figures\B_phi_z_decay.png)
+![B_phi_r_decay](Coding\figures\B_phi_r_decay.png) -->
 <div style="text-align:center;">
-    <img src="figures\B_phi_z_decay.png" alt="B_phi_z Decay" />
+    <img src="Coding\figures\B_phi_z_decay.png" alt="B_phi_z Decay" />
 </div>
 
 <div style="text-align:center;">
-    <img src="figures\B_phi_r_decay.png" alt="B_phi_r Decay" />
+    <img src="Coding\figures\B_phi_r_decay.png" alt="B_phi_r Decay" />
 </div>
 
 #### 1.5.2 Study of evolution of pitch angle.
@@ -256,37 +256,37 @@ $$
 
 The time evolution of the fields are given below for reference:
 
-<!-- ![Bphi_Br_z_r_evolution](figures\Bphi_Br_z_r_evolution.png) -->
+<!-- ![Bphi_Br_z_r_evolution](Coding\figures\Bphi_Br_z_r_evolution.png) -->
 
 <div style="text-align:center;">
-    <img src="figures\Bphi_Br_z_r_evolution.png" alt="Bphi_Br_z_r_evolution" />
+    <img src="Coding\figures\Bphi_Br_z_r_evolution.png" alt="Bphi_Br_z_r_evolution" />
 </div>
 
 
 The results of the pitch angle evolution at certain specific spatial steps were obtained as well. The results:
 
-<!-- ![pitch_angle_z_timeevolution_at_diff_spatialsteps](figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png)
-![pitch_angle_r_timeevolution_at_diff_spatialsteps](figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png) -->
+<!-- ![pitch_angle_z_timeevolution_at_diff_spatialsteps](Coding\figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png)
+![pitch_angle_r_timeevolution_at_diff_spatialsteps](Coding\figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png) -->
 
 <div style="text-align:center;">
-    <img src="figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png" alt="pitch_angle_z_timeevolution_at_diff_spatialsteps" />
+    <img src="Coding\figures\pitch_angle_z_timeevolution_at_diff_spatialsteps.png" alt="pitch_angle_z_timeevolution_at_diff_spatialsteps" />
 </div>
 
 <div style="text-align:center;">
-    <img src="figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png" alt="pitch_angle_r_timeevolution_at_diff_spatialsteps" />
+    <img src="Coding\figures\pitch_angle_r_timeevolution_at_diff_spatialsteps.png" alt="pitch_angle_r_timeevolution_at_diff_spatialsteps" />
 </div>
 
 To get another perspective, the pitch angle variation over spatial domain at different time steps is also found. The results are:
 
-<!-- ![pitch_angle_z_spatialevolution_at_diff_timesteps.png](figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png)
-![pitch_angle_r_spatialvariation_at_diff_timesteps](figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png) -->
+<!-- ![pitch_angle_z_spatialevolution_at_diff_timesteps.png](Coding\figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png)
+![pitch_angle_r_spatialvariation_at_diff_timesteps](Coding\figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png) -->
 
 <div style="text-align:center;">
-    <img src="figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png" alt="pitch_angle_z_spatialevolution_at_diff_timesteps" />
+    <img src="Coding\figures\pitch_angle_z_spatialevolution_at_diff_timesteps.png" alt="pitch_angle_z_spatialevolution_at_diff_timesteps" />
 </div>
 
 <div style="text-align:center;">
-    <img src="figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png" alt="pitch_angle_r_spatialevolution_at_diff_timesteps" />
+    <img src="Coding\figures\pitch_angle_r_spatialevolution_at_diff_timesteps.png" alt="pitch_angle_r_spatialevolution_at_diff_timesteps" />
 </div>
 
 #### 1.5.3 Study of Magnetic field evolution with different seed fields and different boundary conditions
@@ -311,10 +311,10 @@ B_{r}( z) = 3 \sin \left( \frac{{r - r_i}}{{r_f - r_i}} \pi \right) + 2.5 \sin \
 $$
 The results are:
 
-<!-- ![Bphi_Br_z_r_evolution_trial1](figures\Bphi_Br_z_r_evolution_trial1.png) -->
+<!-- ![Bphi_Br_z_r_evolution_trial1](Coding\figures\Bphi_Br_z_r_evolution_trial1.png) -->
 
 <div style="text-align:center;">
-    <img src="figures\Bphi_Br_z_r_evolution_trial1.png" alt="Bphi_Br_z_r_evolution_trial1" />
+    <img src="Coding\figures\Bphi_Br_z_r_evolution_trial1.png" alt="Bphi_Br_z_r_evolution_trial1" />
 </div>
 
 Here, with zero boundary conditions, the boundaries are maintained well in the z-implementation. The reason for this is 'relative anti-symmetric' ghost zones which keeps the $\frac{\partial^2 \overline B}{\partial z^@}$ zero at the boundaries.
@@ -341,10 +341,10 @@ B_{r}( r) = 3 \cos \left( \frac{{r - r_i}}{{r_f - r_i}} \pi \right) + 2.5 \cos \
 $$
 The results are:
 
-<!-- ![Bphi_Br_z_r_evolution_trial2](figures\Bphi_Br_z_r_evolution_trial2.png) -->
+<!-- ![Bphi_Br_z_r_evolution_trial2](Coding\figures\Bphi_Br_z_r_evolution_trial2.png) -->
 
 <div style="text-align:center;">
-    <img src="figures\Bphi_Br_z_r_evolution_trial2.png" alt="Bphi_Br_z_r_evolution_trial2" />
+    <img src="Coding\figures\Bphi_Br_z_r_evolution_trial2.png" alt="Bphi_Br_z_r_evolution_trial2" />
 </div>
 
 Here in $z$ implementation, even the non-zero boundaries are maintained well as expected. 
@@ -399,53 +399,53 @@ Find the code at [task2_code](task2_code.html).
 
 To test the solver as well as obtain preliminary results, we ran the following simulation. THe results shows amplification as expected.
 
-![image](figures\task2\Br_Bphi_time_evolution.png)
-![image](figures\task2\B_strength_time_evolution.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution.png)
+![image](Coding\figures\task2\B_strength_time_evolution.png)
 
 #### 2.4.2 Decay rate at different spatial steps
 
 To find the decay rate, we take the, we first plotted the magnetic field strength evolution over time in a log-plot, which shows straight lines as expected. Some local variation (as seen as one deviant curve in the figure below) could be due to the choice of the seed field. as it is not seen in every trial done.
-![image](figures\task2\B_strength_time_evolution_at_different_r.png)
+![image](Coding\figures\task2\B_strength_time_evolution_at_different_r.png)
 
 To find the decay rate, we take the slope of the log-plot of the magnetic field strength at the middle of the spatial domain, assuming exponential decay. The results are:
-![image](figures\task2\B_strength_time_evolution_at_middle_r.png)
+![image](Coding\figures\task2\B_strength_time_evolution_at_middle_r.png)
 
 #### 2.4.3 Pitch angle evolution
 The evolution of pitch angle was also tracked and is given below. The choice of seed field play a major role here since these simulations were of short time periods.
-![image](figures\task2\pitch_angle_time_evolution.png)
+![image](Coding\figures\task2\pitch_angle_time_evolution.png)
 
 #### 2.4.4 Magnetic field evolution with different seed fields
 
 For studying the evolution with different seed fields, we ran two different simulations as shown below.
-![image](figures\task2\Br_Bphi_time_evolution_seed_field1.png)
-![image](figures\task2\Br_Bphi_time_evolution_seed_field2.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution_seed_field1.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution_seed_field2.png)
 The magnetic strength evolution of the different seed fields are:
-![image](figures\task2\B_strength_time_evolution_seed_field1.png)
-![image](figures\task2\B_strength_time_evolution_seed_field2.png)
+![image](Coding\figures\task2\B_strength_time_evolution_seed_field1.png)
+![image](Coding\figures\task2\B_strength_time_evolution_seed_field2.png)
 
 
 #### 2.4.5 Magnetic field evolution with different boundary conditions
 To study the effect of boundary conditions, we ran the simulation with symmetric, anti-symmetric and relative anti-symmetric ghost zones, each of which ensures a different boundary condition. 
 The symmetric boundary condition keeps the first derivative zero, the anti-symmetric boundary condition keeps the boundary at zero itself, whereas the relative anti-symmetric keeps the second derivative zero. We found that the anti-symmetric boundary conditions suits the current task and will be followed in the next section.
 
-![image](figures\task2\Br_Bphi_time_evolution_ghost_zone_anti-symmetric.png)
-![image](figures\task2\Br_Bphi_time_evolution_ghost_zone_symmetric.png)
-![image](figures\task2\Br_Bphi_time_evolution_ghost_zone_relative_anti-symmetric.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution_ghost_zone_anti-symmetric.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution_ghost_zone_symmetric.png)
+![image](Coding\figures\task2\Br_Bphi_time_evolution_ghost_zone_relative_anti-symmetric.png)
 The evolutions of magnetic field strength for each of the implementation above is:
-![image](figures\task2\B_strength_time_evolution_ghost_zone_anti-symmetric.png)
-![image](figures\task2\B_strength_time_evolution_ghost_zone_symmetric.png)
-![image](figures\task2\B_strength_time_evolution_ghost_zone_relative_anti-symmetric.png)
+![image](Coding\figures\task2\B_strength_time_evolution_ghost_zone_anti-symmetric.png)
+![image](Coding\figures\task2\B_strength_time_evolution_ghost_zone_symmetric.png)
+![image](Coding\figures\task2\B_strength_time_evolution_ghost_zone_relative_anti-symmetric.png)
 
 #### 2.4.6 Finding critical dynamo number
 To find the critical dynamo number at some time, we plot the local growth rate at that time and check at which spatial position does it cross zero (move from decay to growth). THe values used in this implementation is inspired from the numerical simulation in [[4]](#references). It was used such that those $R_omega$ and $D_C$ values are present in our value range across $r$.
 
 
 The variation of $R_\omega$ and Dynamo number $D$ across $r$ was obtained as:
-![image](figures\task2\omega_Dynamo_number_vs_r_trial12.png)
+![image](Coding\figures\task2\omega_Dynamo_number_vs_r_trial12.png)
 The magnetic field strength evolution of this implementation turned out to be:
-![image](figures\task2\B_strength_time_evolution_trial12.png)
+![image](Coding\figures\task2\B_strength_time_evolution_trial12.png)
 The local growth rate and corresponding Critical Dynamo Number at unit time is marked in the figure below.
-![image](figures\task2\gamma_vs_r_trial12_withDc.png)
+![image](Coding\figures\task2\gamma_vs_r_trial12_withDc.png)
 
 The above method was done, drawing inspiration from SS21 Figure 11.1 [[2]](#references) for our experimental setting. Reading into another paper [[4]](#references), I believe it might have been better to run the simulation with a range of values for global dynamo number, each simulation extending to the stable regime. Then, the critical dynamo number can be found by checking the value of fynamo number at which the steady decay changes into steady growth. This required a large amount of time and thus could not be explored right now.
 
@@ -455,7 +455,7 @@ $$D_C = - \frac{\pi^5}{32};\ \ \ \gamma = \frac{2}{\pi} t_d^{-1} (\sqrt{-D} - \s
 
 With the theoretical values at $t_d = 1$ (unit diffusion time, since time is scaled) and the global decay rate obtained at a longer simulation, the below figure was plotted.
 
-![image](figures\task2\gamma_vs_r_trial12_global.png)
+![image](Coding\figures\task2\gamma_vs_r_trial12_global.png)
 
 ## Main Project
 ________
@@ -547,8 +547,8 @@ Since the star formations are more in smaller radius, a radially decreasing prof
 $$ V_z = V_0 \times \left(1 + 0.5 \times \left(\left(\frac{r - r_{v}}{r_{v}}\right)^2 - 1\right)\right) $$
 
 The last two profiles mentioned above are obtained by putting $r_v$ = $r_f$ (final radius) and $r_v$ = 10 $kpc$ respectively. The profiles are shown below.
-![image](figures\task3\trial31_V_z_vs_r.png)
-![image](figures\task3\trial32_V_z_vs_r.png)
+![image](Coding\figures\task3\trial31_V_z_vs_r.png)
+![image](Coding\figures\task3\trial32_V_z_vs_r.png)
 Note that this is just a sample profile mimicking a shape intuitive to the reasoning above.
 
 #### 2.6. Addition of Disk-flaring
