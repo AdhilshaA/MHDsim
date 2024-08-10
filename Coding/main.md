@@ -1,7 +1,7 @@
 P464 - MHD Project
 ---
 - Implemented by [Adhilsha A](https://github.com/AdhilshaA)
-- Last updated on *14-03-2024*
+- Last updated on *29-04-2024*
 
 This website follows the updates on my project on MHD. The project is about the `study of the Galactic Dynamos`. Each task in the project gets one step closer to the final goal. The project is divided into 3 tasks.
 ________
