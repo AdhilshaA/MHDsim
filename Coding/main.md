@@ -28,7 +28,21 @@ ________
     - [2.4.4 Magnetic field evolution with different seed fields](#244-magnetic-field-evolution-with-different-seed-fields)
     - [2.4.5 Magnetic field evolution with different boundary conditions](#245-magnetic-field-evolution-with-different-boundary-conditions)
     - [2.4.6 Finding critical dynamo number](#246-finding-critical-dynamo-number)
-- [Task 3: (TBD)](#task-3-tbd)
+- [Main Project](#main-project)
+  - [Abstract](#abstract)
+  - [1. Introduction](#1-introduction)
+  - [2. Methods](#2-methods)
+    - [2.1. Finite difference](#21-finite-difference)
+    - [2.2. Time-stepping using RK4](#22-time-stepping-using-rk4)
+    - [2.3. Implementation of BCs](#23-implementation-of-bcs)
+    - [2.4. Calculation of Global growth rate](#24-calculation-of-global-growth-rate)
+    - [2.5. Intuition behind Velocity profiles](#25-intuition-behind-velocity-profiles)
+    - [2.6. Addition of Disk-flaring](#26-addition-of-disk-flaring)
+  - [3. Simulation and results](#3-simulation-and-results)
+    - [3.1. Effect of non-zero vertical outflow](#31-effect-of-non-zero-vertical-outflow)
+    - [3.2. Effect of different profiles of vertical outflow](#32-effect-of-different-profiles-of-vertical-outflow)
+    - [](#)
+  - [Conclusions](#conclusions)
 - [References](#references)
 ________
 
@@ -443,8 +457,120 @@ With the theoretical values at $t_d = 1$ (unit diffusion time, since time is sca
 
 ![image](figures\task2\gamma_vs_r_trial12_global.png)
 
-## Task 3: (TBD)
+## Main Project
 ________
+
+### Abstract
+
+
+Studying `galactic mean-field dynamos` involves exploring the intricate dynamics governing cosmic magnetic fields, which provide invaluable insights into the formation and evolution of galaxies. Our research focuses on understanding the `impact of vertical outflows` within these systems, as they greatly influence the distribution of gas and magnetic fields within galaxies and are crucial to the star formation rates and matter-energy transport processes. In this study, our objective was to investigate how vertical outflows, characterized by various velocity profiles, influence the evolution of galactic magnetic fields. 
+
+Utilizing a combination of finite differencing and RK4 methods, we simulated the kinematic regime to observe the behavior of magnetic fields over time. Our findings demonstrate that the incorporation of velocity outflows, particularly stronger ones, `hinders the growth of magnetic fields`, and in some cases, even leads to decay. This highlights the significant role that vertical outflows play in `shaping the evolution of magnetic fields` in galactic dynamos, particularly emphasizing their interaction with radial terms.
+
+These insights can not only deepen our understanding of the dynamics of galactic magnetic fields but also contribute to broader discussions surrounding galaxy formation. By studying the intricate interplay between various physical processes within cosmic structures, this project sheds light on aspects of galactic evolution that are closer to our comprehension of the universe's complex mechanisms.
+
+### 1. Introduction
+
+### 2. Methods
+#### 2.1. Finite difference
+The spatial derivatives are calculated using the finite difference method. here, we are using 6th order finite difference method for the spatial derivatives. The 6th order finite difference method is given by:
+$$
+\frac{d f}{d x} = \frac{1}{60\delta x}\left( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3} \right) $$
+$$
+\frac{d^2 f}{d x^2} = \frac{1}{180\delta x^2}\left( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} - 27f_{i+2} + 2f_{i+3} \right) $$
+
+Other orders can be used and is available for use in the code.
+
+For the sake of obtaining smooth derivatives as well for the sake of maintaining the boundary conditions, we use `ghost zones`. By default, 'relative anti-symmetric' ghost zones are used where the ghost cell at $i$ distance away from boundary $b$ is given by:
+$$ f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} $$
+$$ f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} $$
+
+where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference method).
+
+
+#### 2.2. Time-stepping using RK4
+The time stepping is done using the RK4 method. Our evolution function can be given of form:
+$$
+\frac{\partial \overline B}{\partial t} = f(\overline B, t) $$
+Then, the RK4 method evolution for a single time step can be given by:
+$$
+\kappa_1 = \delta t f(\overline B, t) $$
+$$
+\kappa_2 = \delta t f(\overline B + \frac{\kappa_1}{2}, t + \frac{\delta t}{2}) $$
+$$
+\kappa_3 = \delta t f(\overline B + \frac{\kappa_2}{2}, t + \frac{\delta t}{2}) $$
+$$
+\kappa_4 = \delta t f(\overline B + k_3, t + \delta t) $$
+
+$$
+\overline B(t + \delta t) = \overline B(t) + \frac{1}{6}(\kappa_1 + 2\kappa_2 + 2\kappa_3 + \kappa_4) $$
+
+
+The thing to note here about the generalized form, with regards to the RK4 method, is that:
+- The spatial derivatives do not change values with the change ($\overline B \rightarrow \overline B + \kappa/2$) in the RK4 method. This is due to the symmetry of the spatial derivative equations. Hence, the spatial derivatives are calculated only once at the start of the time step. Thus, it is not mentioned in the equation form.
+
+#### 2.3. Implementation of BCs
+For the sake of obtaining smooth derivatives as well for the sake of maintaining the boundary conditions, we use `ghost zones`. By default, 'relative anti-symmetric' ghost zones are used where the ghost cell at $i$ distance away from boundary $b$ is given by:
+$$ f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} $$
+$$ f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} $$
+
+where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference method).
+
+Other ghost zones types, such as 'symmetric' and 'anti-symmetric' can also be used and is available for use in the code.
+
+#### 2.4. Calculation of Global growth rate
+
+In the calculation of the global growth rate and the iterative process for running simulations until the desired growth rate is achieved, several systematic steps are followed:
+
+1. **Initial Evolution Period**: During the first 10 diffusion times, the magnetic field evolves without monitoring growth rates.
+
+2. **Collection of Growth Rates**: At the end of each subsequent diffusion time, the growth rate is determined at every spatial point. This involves analyzing the evolution of magnetic field strength ($|B|$) over the last few hundred time steps at each spatial point and calculating the slope of the logarithm of $|B|$. This process is repeated for all spatial points, generating a distribution of growth rates ($\gamma$) across the radius ($r$).
+
+3. **Mean Growth Rate Calculation**: The mean growth rate ($\overline{\gamma}$) across all radii is calculated from the obtained distribution of growth rates.
+
+4. **Tolerance Check**: The absolute difference between the mean growth rate ($\overline{\gamma}$) and the individual growth rates ($\gamma$) is compared against a predefined tolerance threshold.
+
+5. **Simulation Continuation**: The simulation continues until the absolute difference falls below the specified tolerance. Furthermore, this condition must be maintained for an additional 3 diffusion times to ensure stability.
+
+By meticulously following these steps, we can ensure accurate determination of global growth rates in galactic dynamo simulations.
+
+#### 2.5. Intuition behind Velocity profiles
+
+Typical choice of the Velocity profile for vertical outflow as given in Chamandy et. al. [[4]](#references) is:
+$$V_z = \frac{V_zz}{h}$$
+Hence, at a certain $z$, the Vertical outflow will be a constant.
+
+In addition to exploring different values of constant profiles, I was also thinking to explore radial variations of the Vertical outflow due to reasons discussed before in Section [1](#1-introduction).
+
+Since the star formations are more in smaller radius, a radially decreasing profile seemed correct. In addition to this, if we consider the effect of higher gravity in smaller radius, we can also try a velocity profile which decreases till some radius $r_v$ and then increase due to the lower effect of gravity. To explore both using similar equation, I defined it in the following way:
+
+$$ V_z = V_0 \times \left(1 + 0.5 \times \left(\left(\frac{r - r_{v}}{r_{v}}\right)^2 - 1\right)\right) $$
+
+The last two profiles mentioned above are obtained by putting $r_v$ = $r_f$ (final radius) and $r_v$ = 10 $kpc$ respectively. The profiles are shown below.
+![image](figures\task3\trial31_V_z_vs_r.png)
+![image](figures\task3\trial32_V_z_vs_r.png)
+Note that this is just a sample profile mimicking a shape intuitive to the reasoning above.
+
+#### 2.6. Addition of Disk-flaring
+
+To include disk flaring, we changed applied the radial profile $h(r)$ on the dimensionless form and propagated it through the other affected parameters ($R_\alpha, D, etc/$) and evolution. The form of disk flaring used is:
+
+$$ h(r) = h \times \sqrt{1 + \left(\frac{r}{r_h}\right)^2} $$
+
+Here, $r_h$ controls the disk flaring and is set to $10 kpc$ as per [[4]](#references)
+
+Note that the scaling and making the parameters are kept unaffected by this change as we use $h$ and the corresponding $t_d$ for that purpose. See the implementation in [task_3-code](task3_code.html).
+
+### 3. Simulation and results
+
+All simulation paramters, trial settings, and the results are available in [Github]() and [task_3-code](task3_code.html)
+#### 3.1. Effect of non-zero vertical outflow
+#### 3.2. Effect of different profiles of vertical outflow
+####
+
+### Conclusions
+
+
 
 ## References
 
