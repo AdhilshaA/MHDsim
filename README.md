@@ -52,7 +52,9 @@ ________
 ### 1.1 Introduction to Diffusion equation
 
 The first task is to solve the diffusion equation in 1D. The induction equation is given by:
-$$ \frac{\partial \overline B_r}{\partial t} = - \frac{\overline V}{r} \frac{\partial}{\partial r}(r\overline B_r) -  \frac{\partial}{\partial z}(\overline V_z \overline B_r) -  \frac{\partial}{\partial z}(\alpha \overline B_{\phi}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right] $$
+```math
+\frac{\partial \overline B_r}{\partial t} = - \frac{\overline V}{r} \frac{\partial}{\partial r}(r\overline B_r) -  \frac{\partial}{\partial z}(\overline V_z \overline B_r) -  \frac{\partial}{\partial z}(\alpha \overline B_{\phi}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right]
+```
 
 $$
 \frac{\partial \overline B_{\phi}}{\partial t} = - q\Omega \overline B_{r} -  \frac{\partial}{\partial r}(\overline V_r \overline B_{\phi}) -  \frac{\partial}{\partial z}(\overline V_z \overline B_{\phi}) +  \frac{\partial}{\partial z}(\alpha \overline B_{r}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_{\phi})\right) +  \frac{\partial ^2 \overline B_{\phi}}{\partial z^2} \right]
