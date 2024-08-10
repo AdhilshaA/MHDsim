@@ -12,6 +12,8 @@ ________
     - [1.1 Introduction to Diffusion equation](#11-introduction-to-diffusion-equation)
     - [1.2 Equation forms](#12-equation-forms)
     - [1.3 Boundary conditions](#13-boundary-conditions)
+    - [1.4 Implementation](#14-implementation)
+      - [1.4.1 Spatial derivative](#141-spatial-derivative)
       - [1.5.1 Study of evolution of Magnetic field strength](#151-study-of-evolution-of-magnetic-field-strength)
       - [1.5.2 Study of evolution of pitch angle.](#152-study-of-evolution-of-pitch-angle)
       - [1.5.3 Study of Magnetic field evolution with different seed fields and different boundary conditions](#153-study-of-magnetic-field-evolution-with-different-seed-fields-and-different-boundary-conditions)
@@ -61,10 +63,12 @@ where $\overline B_r$, $\overline B_{\phi}$ and $\overline B_z$ are the componen
 For this task, we solve the diffusion equation omitting the $\nabla \times (\overline V \times \overline B)$ and $\alpha$ terms. The equation we have to solve becomes:
 
 ```math
-\frac{\partial \overline B_r}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right]```
+\frac{\partial \overline B_r}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right]
+```
 
 ```math
-\frac{\partial \overline B_{\phi}}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_{\phi})\right) +  \frac{\partial ^2 \overline B_{\phi}}{\partial z^2} \right]```
+\frac{\partial \overline B_{\phi}}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_{\phi})\right) +  \frac{\partial ^2 \overline B_{\phi}}{\partial z^2} \right]
+```
 
 Since both $\overline B_r$ and $\overline B_{\phi}$ have same form of equation, we generalize the form of the equation to:
 ```math
@@ -80,7 +84,8 @@ In case of $\overline B_r(z)$ and $\overline B_{\phi}(z)$, the equations become:
 
 In case of $\overline B_r(r)$ and $\overline B_{\phi}(r)$ under no-$z$ appproximation, the equations become:
 ```math
-\frac{\partial \overline B}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B)\right) -  \frac{\pi ^2}{4 h^2}\overline B \right] ```
+\frac{\partial \overline B}{\partial t} = \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B)\right) -  \frac{\pi ^2}{4 h^2}\overline B \right]
+```
 
 On expanding the equation, we get:
 ```math
@@ -93,7 +98,8 @@ These are the equations to be solved in this task.
 
 We will be using the simplest boundary conditions for this task. The boundary conditions are:
 ```math
-\overline B_r = \overline B_{\phi} = 0 \quad \text{at} \quad (z = -h, h)\text{ or }(r = 0,r_{max}) ```
+\overline B_r = \overline B_{\phi} = 0 \quad \text{at} \quad (z = -h, h)\text{ or }(r = 0,r_{max}) 
+```
 
 We will be taking dimensionless units with $h = 1$, $\eta_t = 1$.
 
