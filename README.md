@@ -15,6 +15,7 @@ ________
     - [1.4 Implementation](#14-implementation)
       - [1.4.1 Spatial derivative](#141-spatial-derivative)
       - [1.4.2 RK4 time stepping](#142-rk4-time-stepping)
+    - [1.5 Constants and parameters for simulation](#15-constants-and-parameters-for-simulation)
       - [1.5.1 Study of evolution of Magnetic field strength](#151-study-of-evolution-of-magnetic-field-strength)
       - [1.5.2 Study of evolution of pitch angle.](#152-study-of-evolution-of-pitch-angle)
       - [1.5.3 Study of Magnetic field evolution with different seed fields and different boundary conditions](#153-study-of-magnetic-field-evolution-with-different-seed-fields-and-different-boundary-conditions)
@@ -156,19 +157,25 @@ As you can see the spatial derivatives are smooth and the second derivative is z
 
 The time stepping is done using the RK4 method. Our evolution function can be given of form:
 ```math
-\frac{\partial \overline B}{\partial t} = f(\overline B, t) ```
+\frac{\partial \overline B}{\partial t} = f(\overline B, t) 
+```
 Then, the RK4 method evolution for a single time step can be given by:
 ```math
-\kappa_1 = \delta t f(\overline B, t) ```
+\kappa_1 = \delta t f(\overline B, t) 
+```
 ```math
-\kappa_2 = \delta t f(\overline B + \frac{\kappa_1}{2}, t + \frac{\delta t}{2}) ```
+\kappa_2 = \delta t f(\overline B + \frac{\kappa_1}{2}, t + \frac{\delta t}{2}) 
+```
 ```math
-\kappa_3 = \delta t f(\overline B + \frac{\kappa_2}{2}, t + \frac{\delta t}{2}) ```
+\kappa_3 = \delta t f(\overline B + \frac{\kappa_2}{2}, t + \frac{\delta t}{2}) 
+```
 ```math
-\kappa_4 = \delta t f(\overline B + k_3, t + \delta t) ```
+\kappa_4 = \delta t f(\overline B + k_3, t + \delta t) 
+```
 
 ```math
-\overline B(t + \delta t) = \overline B(t) + \frac{1}{6}(\kappa_1 + 2\kappa_2 + 2\kappa_3 + \kappa_4) ```
+\overline B(t + \delta t) = \overline B(t) + \frac{1}{6}(\kappa_1 + 2\kappa_2 + 2\kappa_3 + \kappa_4) 
+```
 
 
 The thing to note here about the generalized form, with regards to the RK4 method, is that:
@@ -250,7 +257,8 @@ from these results, taking the middle point in the spatial domain, the magnetic 
 
 For this part, I am setting the seed $\overline B_r$ and $\overline B_{\phi}$ to non-zero values and evolving them over time. The pitch angle is given by:
 ```math
-p = \tan^{-1}\left(\frac{\overline B_{r}}{\overline B_{\phi}}\right)```
+p = \tan^{-1}\left(\frac{\overline B_{r}}{\overline B_{\phi}}\right)
+```
 
 The seed fields taken for this simulation are, for the z-implementation:
 ```math
@@ -377,42 +385,52 @@ ________
 From the original induction equation, we omit the terms involving $\overline V$ from both equations and the $\alpha$ term from the equation for $B_{\phi}$, in order to get a $\alpha\omega$ dynamo. Task 2 will be focused on solving these equations. THe equations are:
 
 ```math
- \frac{\partial \overline B_r}{\partial t} = -  \frac{\partial}{\partial z}(\alpha \overline B_{\phi}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right] ```
+ \frac{\partial \overline B_r}{\partial t} = -  \frac{\partial}{\partial z}(\alpha \overline B_{\phi}) + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_r)\right) +  \frac{\partial ^2 \overline B_r}{\partial z^2} \right] 
+ ```
 
 ```math
- \frac{\partial \overline B_{\phi}}{\partial t} = - q\Omega \overline B_{r} + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_{\phi})\right) +  \frac{\partial ^2 \overline B_{\phi}}{\partial z^2} \right] ```
+ \frac{\partial \overline B_{\phi}}{\partial t} = - q\Omega \overline B_{r} + \eta_t \left[  \frac{\partial}{\partial r} \left( \frac{1}{r}  \frac{\partial}{\partial r}(r \overline B_{\phi})\right) +  \frac{\partial ^2 \overline B_{\phi}}{\partial z^2} \right] 
+ ```
 
 By applying no-$z$ approximation and expanding, equations become:
 ```math
- \frac{\partial \overline B_r}{\partial t} = -  \frac{2}{\pi h}(\alpha \overline B_{\phi}) + \eta_t \left[ \frac{\partial ^2 \overline B}{\partial r^2} +  \frac{1}{r}  \frac{\partial \overline B}{\partial r} - \frac{\overline B}{r^2} +  \frac{\pi^2 }{4h^2}\overline B_r \right] ```
+ \frac{\partial \overline B_r}{\partial t} = -  \frac{2}{\pi h}(\alpha \overline B_{\phi}) + \eta_t \left[ \frac{\partial ^2 \overline B}{\partial r^2} +  \frac{1}{r}  \frac{\partial \overline B}{\partial r} - \frac{\overline B}{r^2} +  \frac{\pi^2 }{4h^2}\overline B_r \right]
+```
 
 ```math
- \frac{\partial \overline B_{\phi}}{\partial t} = - q\Omega \overline B_{r} + \eta_t \left[  \frac{\partial ^2 \overline B}{\partial r^2} +  \frac{1}{r}  \frac{\partial \overline B}{\partial r} - \frac{\overline B}{r^2} +  \frac{\pi^2 }{4h^2}\overline B_{\phi} \right] ```
+ \frac{\partial \overline B_{\phi}}{\partial t} = - q\Omega \overline B_{r} + \eta_t \left[  \frac{\partial ^2 \overline B}{\partial r^2} +  \frac{1}{r}  \frac{\partial \overline B}{\partial r} - \frac{\overline B}{r^2} +  \frac{\pi^2 }{4h^2}\overline B_{\phi} \right] 
+```
 
 ### 2.3 Implementation
 
 As done before, we will be using the dimensionless form of the equations. Hence it becomes:
 ```math 
-\frac{\partial \tilde B}{\partial \tilde t} = -  \frac{2}{\pi}(\alpha \tilde B_{\phi}) + \left[ \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2 }{4}\tilde B \right] ```
+\frac{\partial \tilde B}{\partial \tilde t} = -  \frac{2}{\pi}(\alpha \tilde B_{\phi}) + \left[ \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2 }{4}\tilde B \right] 
+```
 
 ```math 
-\frac{\partial \tilde B}{\partial \tilde t} = - q\Omega \tilde B_{r} + \left[  \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2}{4}\tilde B \right] ```
+\frac{\partial \tilde B}{\partial \tilde t} = - q\Omega \tilde B_{r} + \left[  \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2}{4}\tilde B \right] 
+```
 
 We will use the following definitions in our implementation:
 
 ```math
-\alpha = \alpha_0(r)\hat\alpha(z);\ \ \ \hat \alpha = sin\left(\pi \tilde z\right);\ \ \ q=-\frac{r}{\Omega}\frac{\partial \Omega}{\partial r}; \ \ \ \Omega = \frac{\Omega_0}{\sqrt{1 + (r/r_\omega)^2}}```
+\alpha = \alpha_0(r)\hat\alpha(z);\ \ \ \hat \alpha = sin\left(\pi \tilde z\right);\ \ \ q=-\frac{r}{\Omega}\frac{\partial \Omega}{\partial r}; \ \ \ \Omega = \frac{\Omega_0}{\sqrt{1 + (r/r_\omega)^2}}
+```
 ```math
-R_\alpha = \frac{\alpha_0h}{\eta_t};\ \ \ R_\omega = \frac{-q\Omega h^2}{\eta_t}```
+R_\alpha = \frac{\alpha_0h}{\eta_t};\ \ \ R_\omega = \frac{-q\Omega h^2}{\eta_t}
+```
 
 We will be keeping $\alpha$ a constant to properly study the dynamo, instead of zero at midplane.
 
 The final equations are:
 ```math
- \frac{\partial \tilde B}{\partial \tilde t} = -  \frac{2}{\pi}(R_\alpha\hat\alpha \tilde B_{\phi}) + \left[ \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2 }{4}\tilde B \right] ```
+ \frac{\partial \tilde B}{\partial \tilde t} = -  \frac{2}{\pi}(R_\alpha\hat\alpha \tilde B_{\phi}) + \left[ \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2 }{4}\tilde B \right] 
+ ```
 
 ```math
- \frac{\partial \tilde B}{\partial \tilde t} = R_\omega B_{r} + \left[  \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2}{4}\tilde B \right] ```
+ \frac{\partial \tilde B}{\partial \tilde t} = R_\omega B_{r} + \left[  \frac{\partial ^2 \tilde B}{\partial\tilde r^2} +  \frac{1}{\tilde r}  \frac{\partial \tilde B}{\partial\tilde r} - \frac{\tilde B}{\tilde r^2} +  \frac{\pi^2}{4}\tilde B \right] 
+ ```
 
 For solving these equations, we will use the same spatial derivative function using finite difference as given before in Section [1.4.1](#141-spatial-derivative). For time-stepping, we implement coupled RK4 which solved the coupled differential equations including every single spatial position.
 
@@ -476,7 +494,8 @@ The above method was done, drawing inspiration from SS21 Figure 11.1 [[2]](#refe
 
 For doing a similar comparison, our simulation will be done for a longer time period till a global decay rate is obtained and will be compared with the theoretical growth rate predicted by  [[4]](#references). The values there were given by:
 ```math
-D_C = - \frac{\pi^5}{32};\ \ \ \gamma = \frac{2}{\pi} t_d^{-1} (\sqrt{-D} - \sqrt{-D_C}) ```
+D_C = - \frac{\pi^5}{32};\ \ \ \gamma = \frac{2}{\pi} t_d^{-1} (\sqrt{-D} - \sqrt{-D_C}) 
+```
 
 
 With the theoretical values at $t_d = 1$ (unit diffusion time, since time is scaled) and the global decay rate obtained at a longer simulation, the below figure was plotted.
@@ -501,17 +520,21 @@ These insights can not only deepen our understanding of the dynamics of galactic
 #### 2.1. Finite difference
 The spatial derivatives are calculated using the finite difference method. here, we are using 6th order finite difference method for the spatial derivatives. The 6th order finite difference method is given by:
 ```math
-\frac{d f}{d x} = \frac{1}{60\delta x}\left( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3} \right) ```
+\frac{d f}{d x} = \frac{1}{60\delta x}\left( - f_{i-3} + 9f_{i-2} - 45f_{i-1} + 45f_{i+1} - 9f_{i+2} + f_{i+3} \right) 
+```
 ```math
-\frac{d^2 f}{d x^2} = \frac{1}{180\delta x^2}\left( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} - 27f_{i+2} + 2f_{i+3} \right) ```
+\frac{d^2 f}{d x^2} = \frac{1}{180\delta x^2}\left( 2f_{i-3} - 27f_{i-2} + 270f_{i-1} - 490f_{i} + 270f_{i+1} - 27f_{i+2} + 2f_{i+3} \right) 
+```
 
 Other orders can be used and is available for use in the code.
 
 For the sake of obtaining smooth derivatives as well for the sake of maintaining the boundary conditions, we use `ghost zones`. By default, 'relative anti-symmetric' ghost zones are used where the ghost cell at $i$ distance away from boundary $b$ is given by:
 ```math
- f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} ```
+ f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} 
+ ```
 ```math
- f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} ```
+ f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} 
+ ```
 
 where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference method).
 
@@ -519,19 +542,25 @@ where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference 
 #### 2.2. Time-stepping using RK4
 The time stepping is done using the RK4 method. Our evolution function can be given of form:
 ```math
-\frac{\partial \overline B}{\partial t} = f(\overline B, t) ```
+\frac{\partial \overline B}{\partial t} = f(\overline B, t) 
+```
 Then, the RK4 method evolution for a single time step can be given by:
 ```math
-\kappa_1 = \delta t f(\overline B, t) ```
+\kappa_1 = \delta t f(\overline B, t) 
+```
 ```math
-\kappa_2 = \delta t f(\overline B + \frac{\kappa_1}{2}, t + \frac{\delta t}{2}) ```
+\kappa_2 = \delta t f(\overline B + \frac{\kappa_1}{2}, t + \frac{\delta t}{2}) 
+```
 ```math
-\kappa_3 = \delta t f(\overline B + \frac{\kappa_2}{2}, t + \frac{\delta t}{2}) ```
+\kappa_3 = \delta t f(\overline B + \frac{\kappa_2}{2}, t + \frac{\delta t}{2}) 
+```
 ```math
-\kappa_4 = \delta t f(\overline B + k_3, t + \delta t) ```
+\kappa_4 = \delta t f(\overline B + k_3, t + \delta t) 
+```
 
 ```math
-\overline B(t + \delta t) = \overline B(t) + \frac{1}{6}(\kappa_1 + 2\kappa_2 + 2\kappa_3 + \kappa_4) ```
+\overline B(t + \delta t) = \overline B(t) + \frac{1}{6}(\kappa_1 + 2\kappa_2 + 2\kappa_3 + \kappa_4) 
+```
 
 
 The thing to note here about the generalized form, with regards to the RK4 method, is that:
@@ -540,9 +569,11 @@ The thing to note here about the generalized form, with regards to the RK4 metho
 #### 2.3. Implementation of BCs
 For the sake of obtaining smooth derivatives as well for the sake of maintaining the boundary conditions, we use `ghost zones`. By default, 'relative anti-symmetric' ghost zones are used where the ghost cell at $i$ distance away from boundary $b$ is given by:
 ```math
- f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} ```
+ f_{b-i} = 2f_{b} - f_{b+i} \quad \text{at the start of the spatial domain} 
+ ```
 ```math
- f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} ```
+ f_{b+i} = 2f_{b} - f_{b-i} \quad \text{at the end of the spatial domain} 
+ ```
 
 where $i = 1, 2, 3, ..., n$ ($n$ is the half the order of the finite difference method).
 
@@ -568,7 +599,8 @@ By meticulously following these steps, we can ensure accurate determination of g
 
 Typical choice of the Velocity profile for vertical outflow as given in Chamandy et. al. [[4]](#references) is:
 ```math
-V_z = \frac{V_zz}{h}```
+V_z = \frac{V_zz}{h}
+```
 Hence, at a certain $z$, the Vertical outflow will be a constant.
 
 In addition to exploring different values of constant profiles, I was also thinking to explore radial variations of the Vertical outflow due to reasons discussed before in Section [1](#1-introduction).
@@ -576,7 +608,8 @@ In addition to exploring different values of constant profiles, I was also think
 Since the star formations are more in smaller radius, a radially decreasing profile seemed correct. In addition to this, if we consider the effect of higher gravity in smaller radius, we can also try a velocity profile which decreases till some radius $r_v$ and then increase due to the lower effect of gravity. To explore both using similar equation, I defined it in the following way:
 
 ```math
- V_z = V_0 \times \left(1 + 0.5 \times \left(\left(\frac{r - r_{v}}{r_{v}}\right)^2 - 1\right)\right) ```
+ V_z = V_0 \times \left(1 + 0.5 \times \left(\left(\frac{r - r_{v}}{r_{v}}\right)^2 - 1\right)\right) 
+ ```
 
 The last two profiles mentioned above are obtained by putting $r_v$ = $r_f$ (final radius) and $r_v$ = 10 $kpc$ respectively. The profiles are shown below.
 ![image](Coding\figures\task3\trial31_V_z_vs_r.png)
@@ -588,7 +621,8 @@ Note that this is just a sample profile mimicking a shape intuitive to the reaso
 To include disk flaring, we changed applied the radial profile $h(r)$ on the dimensionless form and propagated it through the other affected parameters ($R_\alpha, D, etc/$) and evolution. The form of disk flaring used is:
 
 ```math
- h(r) = h \times \sqrt{1 + \left(\frac{r}{r_h}\right)^2} ```
+ h(r) = h \times \sqrt{1 + \left(\frac{r}{r_h}\right)^2} 
+ ```
 
 Here, $r_h$ controls the disk flaring and is set to $10 kpc$ as per [[4]](#references)
 
