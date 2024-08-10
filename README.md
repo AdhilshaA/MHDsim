@@ -18,7 +18,7 @@ These insights can not only deepen our understanding of the dynamics of galactic
 
 ## References
 
-1. Brandenburg, A. (2019). Computational aspects of astrophysical MHD and turbulence. In Advances in nonlinear dynamos (pp. 269-344). CRC Press[.[link](https://arxiv.org/abs/astro-ph/0109497)]
-2. Shukurov, A., & Subramanian, K. (2021). Astrophysical Magnetic Fields: From Galaxies to the Early Universe. Cambridge: Cambridge University Press.[[link](https://doi.org/10.1017/9781139046657)]
+1. Brandenburg, A. (2019). Computational aspects of astrophysical MHD and turbulence. In Advances in nonlinear dynamos (pp. 269-344). CRC Press. [[link](https://arxiv.org/abs/astro-ph/0109497)]
+2. Shukurov, A., & Subramanian, K. (2021). Astrophysical Magnetic Fields: From Galaxies to the Early Universe. Cambridge: Cambridge University Press. [[link](https://doi.org/10.1017/9781139046657)]
 3. P464 Class Notes.
 4. Chamandy, L. & Shukurov, A.  & Subramanian, K.  & Stoker, K. (2014). Non-linear galactic dynamos: a toolbox. MNRAS 443. [[link](https://doi.org/10.1093/mnras/stu1274)]
