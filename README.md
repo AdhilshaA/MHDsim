@@ -18,7 +18,8 @@ These insights can not only deepen our understanding of the dynamics of galactic
 
 ## References
 
-1. Brandenburg, A. (2019). Computational aspects of astrophysical MHD and turbulence. In Advances in nonlinear dynamos (pp. 269-344). CRC Press. [[link](https://arxiv.org/abs/astro-ph/0109497)]
-2. Shukurov, A., & Subramanian, K. (2021). Astrophysical Magnetic Fields: From Galaxies to the Early Universe. Cambridge: Cambridge University Press. [[link](https://doi.org/10.1017/9781139046657)]
-3. P464 Class Notes.
-4. Chamandy, L. & Shukurov, A.  & Subramanian, K.  & Stoker, K. (2014). Non-linear galactic dynamos: a toolbox. MNRAS 443. [[link](https://doi.org/10.1093/mnras/stu1274)]
+1. Brandenburg, A. 2019. Computational aspects of astrophysical MHD and turbulence. In *Advances in nonlinear dynamos* (CRC Press). [[link](https://arxiv.org/abs/astro-ph/0109497)]
+2. Chamandy, L., Shukurov, A., Subramanian, K.  & Stoker, K. 2014. MNRAS 443. [[link](https://doi.org/10.1093/mnras/stu1274)]
+3. Chamandy, L. 2024. P464 Class Notes. (NISER)
+4. Shukurov, A., Sokoloff, D., Subramanian, K., & Brandenburg, A. 2006. Galactic dynamo and helicity losses through fountain flow. *Astronomy & Astrophysics*, 448(2), L33-L36. [[link](https://doi.org/10.1051/0004-6361:200600011)]
+5. Shukurov, A., & Subramanian, K. 2021. Astrophysical Magnetic Fields: From Galaxies to the Early Universe. (Cambridge: Cambridge University Press). [[link](https://doi.org/10.1017/9781139046657)]
